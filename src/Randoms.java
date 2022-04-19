@@ -13,19 +13,16 @@ public class Randoms implements Iterable<Integer> {
 
     @Override
     public Iterator<Integer> iterator() {
-        return new RandomsIterator();
-    }
+        return new Iterator<Integer>() {
+            @Override
+            public boolean hasNext() {
+                return true;
+            }
 
-    class RandomsIterator implements Iterator<Integer> {
-
-        @Override
-        public boolean hasNext() {
-            return true;
-        }
-
-        @Override
-        public Integer next() {
-            return random.nextInt(max - min) + min;
-        }
+            @Override
+            public Integer next() {
+                return random.nextInt(max - min) + min;
+            }
+        };
     }
 }
